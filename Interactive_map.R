@@ -4,6 +4,7 @@
 library(ggplot2)
 library(dplyr)
 library(plotly)
+devtools::install_github("ropensci/rnaturalearthhires")
 library(rnaturalearth)
 library(tidyverse)
 library(readr)
@@ -17,7 +18,7 @@ canada <- ne_states(country = "Canada", returnclass = "sf")
 map_data <- read_csv("https://opendata.arcgis.com/datasets/4007a7d2396a4966816628d3abc058c2_0.csv")
 
 
-map_data$NAME <- map_data$NAME %>% str_replace_all(pattern = "Quebec", replacement = "Québec")
+map_data$NAME <- map_data$NAME %>% str_replace_all(pattern = "Quebec", replacement = "QuÃ©bec")
 
 tidy_data <- map_data %>% rename(name = NAME) %>% filter(name!="Repatriated CDN") %>% select(name, Case_Total, Recovered, Deaths, Tests, ActiveCases, Hospitalized, ICU)
 
